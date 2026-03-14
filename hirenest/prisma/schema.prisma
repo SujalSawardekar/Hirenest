@@ -1,0 +1,85 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(auto()) @map("_id") @db.ObjectId
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  password      String?
+  image         String?
+  role          String    @default("CLIENT") // CLIENT, FREELANCER, ADMIN
+
+  // Freelancer specific
+  title      String?
+  hourlyRate Float?
+  skills     String? // Stored as JSON string or comma separated
+  bio        String? @default("")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relationships
+  jobs               Job[]   @relation("ClientJobs")
+  gigs               Gig[]   @relation("FreelancerGigs")
+  ordersAsClient     Order[] @relation("ClientOrders")
+  ordersAsFreelancer Order[] @relation("FreelancerOrders")
+}
+
+model Job {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  description String
+  budget      Float
+  deadline    DateTime
+  skills      String
+  status      String   @default("OPEN") // OPEN, IN_PROGRESS, COMPLETED
+
+  clientId String @db.ObjectId
+  client   User   @relation("ClientJobs", fields: [clientId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Gig {
+  id           String @id @default(auto()) @map("_id") @db.ObjectId
+  title        String
+  category     String
+  description  String
+  price        Float
+  deliveryDays Int
+  revisions    Int
+
+  freelancerId String @db.ObjectId
+  freelancer   User   @relation("FreelancerGigs", fields: [freelancerId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Order {
+  id       String    @id @default(auto()) @map("_id") @db.ObjectId
+  title    String
+  amount   Float
+  status   String    @default("PENDING") // PENDING, ACTIVE, REVIEW, COMPLETED, CANCELLED
+  deadline DateTime?
+
+  clientId String @db.ObjectId
+  client   User   @relation("ClientOrders", fields: [clientId], references: [id])
+
+  freelancerId String @db.ObjectId
+  freelancer   User   @relation("FreelancerOrders", fields: [freelancerId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

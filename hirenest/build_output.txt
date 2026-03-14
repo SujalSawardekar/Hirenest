@@ -1,0 +1,330 @@
+
+> hirenest@0.1.0 build
+> next build
+
+Γû▓ Next.js 16.1.6 (Turbopack)
+- Environments: .env
+
+  Creating an optimized production build ...
+
+> Build error occurred
+Error: Turbopack build failed with 19 errors:
+./src/app/client/freelancers/page.jsx:11:2
+Parsing ecmascript source code failed
+   9 | export default async function BrowseFreelancersPage({
+  10 |     searchParams
+> 11 | }: {
+     |  ^
+  12 |     searchParams?: { search?: string }
+  13 | }) {
+  14 |     const search = searchParams?.search || ""
+
+Expected ',', got ':'
+
+
+./src/app/client/orders/[id]/page.jsx:11:59
+Parsing ecmascript source code failed
+   9 | import { redirect } from "next/navigation"
+  10 |
+> 11 | export default async function OrderTrackingPage({ params }: { params: { id: string } }) {
+     |                                                           ^
+  12 |     const session = await getServerSession(authOptions)
+  13 |     if (!session?.user) redirect("/login")
+  14 |
+
+Expected ',', got ':'
+
+
+./src/app/admin/orders/page.jsx:3:1
+Module not found: Can't resolve '@/lib/auth'
+  1 | import { redirect } from "next/navigation"
+  2 | import { getServerSession } from "next-auth"
+> 3 | import { authOptions } from "@/lib/auth"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { prisma } from "@/lib/prisma"
+  5 |
+  6 | import {
+
+Import map: aliased to relative './src/lib/auth' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./src/app/admin/page.jsx:3:1
+Module not found: Can't resolve '@/lib/auth'
+  1 | import { redirect } from "next/navigation"
+  2 | import { getServerSession } from "next-auth"
+> 3 | import { authOptions } from "@/lib/auth"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { prisma } from "@/lib/prisma"
+  5 |
+  6 | import {
+
+Import map: aliased to relative './src/lib/auth' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./src/app/admin/users/page.jsx:3:1
+Module not found: Can't resolve '@/lib/auth'
+  1 | import { redirect } from "next/navigation"
+  2 | import { getServerSession } from "next-auth"
+> 3 | import { authOptions } from "@/lib/auth"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { prisma } from "@/lib/prisma"
+  5 |
+  6 | import {
+
+Import map: aliased to relative './src/lib/auth' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./src/app/client/orders/page.jsx:7:1
+Module not found: Can't resolve '@/lib/auth'
+   5 | import Link from "next/link"
+   6 | import { getServerSession } from "next-auth"
+>  7 | import { authOptions } from "@/lib/auth"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { prisma } from "@/lib/prisma"
+   9 | import { redirect } from "next/navigation"
+  10 |
+
+Import map: aliased to relative './src/lib/auth' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./src/app/client/profile/page.jsx:3:1
+Module not found: Can't resolve '@/lib/auth'
+  1 | import { redirect } from "next/navigation"
+  2 | import { getServerSession } from "next-auth"
+> 3 | import { authOptions } from "@/lib/auth"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { prisma } from "@/lib/prisma"
+  5 |
+  6 | import { Button } from "@/components/ui/button"
+
+Import map: aliased to relative './src/lib/auth' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./src/app/freelancer/gigs/page.jsx:3:1
+Module not found: Can't resolve '@/lib/auth'
+  1 | import { redirect } from "next/navigation"
+  2 | import { getServerSession } from "next-auth"
+> 3 | import { authOptions } from "@/lib/auth"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { prisma } from "@/lib/prisma"
+  5 | import Link from "next/link"
+  6 |
+
+Import map: aliased to relative './src/lib/auth' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./src/app/freelancer/profile/page.jsx:3:1
+Module not found: Can't resolve '@/lib/auth'
+  1 | import { redirect } from "next/navigation"
+  2 | import { getServerSession } from "next-auth"
+> 3 | import { authOptions } from "@/lib/auth"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { prisma } from "@/lib/prisma"
+  5 |
+  6 | import { Button } from "@/components/ui/button"
+
+Import map: aliased to relative './src/lib/auth' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./src/app/settings/page.jsx:2:1
+Module not found: Can't resolve '@/lib/auth'
+  1 | import { getServerSession } from "next-auth"
+> 2 | import { authOptions } from "@/lib/auth"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 | import { prisma } from "@/lib/prisma"
+  4 | import { redirect } from "next/navigation"
+  5 | import { SettingsForm } from "./SettingsForm"
+
+Import map: aliased to relative './src/lib/auth' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./src/lib/prisma.js:1:1
+Module not found: Can't resolve '@prisma/client'
+> 1 | import { PrismaClient } from "@prisma/client"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 |
+  3 | const globalForPrisma = globalThis;
+  4 |
+
+
+
+Import trace:
+  Server Component:
+    ./src/lib/prisma.js
+    ./src/app/admin/page.jsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./src/app/admin/orders/page.jsx:2:1
+Module not found: Can't resolve 'next-auth'
+  1 | import { redirect } from "next/navigation"
+> 2 | import { getServerSession } from "next-auth"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 | import { authOptions } from "@/lib/auth"
+  4 | import { prisma } from "@/lib/prisma"
+  5 |
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./src/app/admin/page.jsx:2:1
+Module not found: Can't resolve 'next-auth'
+  1 | import { redirect } from "next/navigation"
+> 2 | import { getServerSession } from "next-auth"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 | import { authOptions } from "@/lib/auth"
+  4 | import { prisma } from "@/lib/prisma"
+  5 |
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./src/app/admin/users/page.jsx:2:1
+Module not found: Can't resolve 'next-auth'
+  1 | import { redirect } from "next/navigation"
+> 2 | import { getServerSession } from "next-auth"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 | import { authOptions } from "@/lib/auth"
+  4 | import { prisma } from "@/lib/prisma"
+  5 |
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./src/app/client/orders/page.jsx:6:1
+Module not found: Can't resolve 'next-auth'
+  4 | import { MessageSquare, ExternalLink, Clock, CheckCircle } from "lucide-react"
+  5 | import Link from "next/link"
+> 6 | import { getServerSession } from "next-auth"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 | import { authOptions } from "@/lib/auth"
+  8 | import { prisma } from "@/lib/prisma"
+  9 | import { redirect } from "next/navigation"
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./src/app/client/profile/page.jsx:2:1
+Module not found: Can't resolve 'next-auth'
+  1 | import { redirect } from "next/navigation"
+> 2 | import { getServerSession } from "next-auth"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 | import { authOptions } from "@/lib/auth"
+  4 | import { prisma } from "@/lib/prisma"
+  5 |
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./src/app/freelancer/gigs/page.jsx:2:1
+Module not found: Can't resolve 'next-auth'
+  1 | import { redirect } from "next/navigation"
+> 2 | import { getServerSession } from "next-auth"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 | import { authOptions } from "@/lib/auth"
+  4 | import { prisma } from "@/lib/prisma"
+  5 | import Link from "next/link"
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./src/app/freelancer/profile/page.jsx:2:1
+Module not found: Can't resolve 'next-auth'
+  1 | import { redirect } from "next/navigation"
+> 2 | import { getServerSession } from "next-auth"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 | import { authOptions } from "@/lib/auth"
+  4 | import { prisma } from "@/lib/prisma"
+  5 |
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./src/app/settings/page.jsx:1:1
+Module not found: Can't resolve 'next-auth'
+> 1 | import { getServerSession } from "next-auth"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { authOptions } from "@/lib/auth"
+  3 | import { prisma } from "@/lib/prisma"
+  4 | import { redirect } from "next/navigation"
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+    at <unknown> (./src/app/client/freelancers/page.jsx:11:2)
+    at <unknown> (./src/app/client/orders/[id]/page.jsx:11:59)
+    at <unknown> (./src/app/admin/orders/page.jsx:3:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./src/app/admin/page.jsx:3:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./src/app/admin/users/page.jsx:3:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./src/app/client/orders/page.jsx:7:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./src/app/client/profile/page.jsx:3:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./src/app/freelancer/gigs/page.jsx:3:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./src/app/freelancer/profile/page.jsx:3:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./src/app/settings/page.jsx:2:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./src/lib/prisma.js:1:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./src/app/admin/orders/page.jsx:2:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./src/app/admin/page.jsx:2:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./src/app/admin/users/page.jsx:2:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./src/app/client/orders/page.jsx:6:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./src/app/client/profile/page.jsx:2:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./src/app/freelancer/gigs/page.jsx:2:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./src/app/freelancer/profile/page.jsx:2:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./src/app/settings/page.jsx:1:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
